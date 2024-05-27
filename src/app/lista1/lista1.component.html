@@ -1,0 +1,35 @@
+<div class="grid grid-cols-2 gap-3">
+  <div class="example-container">
+    <h2>To do</h2>
+    <div
+      [id]="appService.todoListId"
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[appService.doneListId, appService.anotherListId, appService.nothingListId]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      @for (item of todo; track item) {
+        <div class="example-box" cdkDrag>{{item}}</div>
+      }
+    </div>
+  </div>
+  
+  <div class="example-container">
+    <h2>Done</h2>
+  
+    <div
+    [id]="appService.doneListId"
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[appService.todoListId, appService.anotherListId, appService.nothingListId]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      @for (item of done; track item) {
+        <div class="example-box" cdkDrag>{{item}}</div>
+      }
+    </div>
+  </div>
+
+</div>  
